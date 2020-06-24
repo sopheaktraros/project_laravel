@@ -126,4 +126,17 @@ class StudentController extends Controller
         $comments = $student->comments;
         return view('/detail', compact('student', 'comments'));
     }
+
+    public function uotFollowup(Request $request ,$id){
+        $student = Student::find($id);
+        $student->activeFollowup = '1';
+        $student->save();
+        return redirect('/home');
+    }
+    public function backToFollowup(Request $request ,$id){
+        $student = Student::find($id);
+        $student->activeFollowup = '0';
+        $student->save();
+        return redirect('/home');
+    }
 }

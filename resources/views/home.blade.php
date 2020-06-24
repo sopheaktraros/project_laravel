@@ -108,7 +108,7 @@
             <td>{{ $item->lastname }}</td>
             <td>{{ $item->class }}</td>
             <td>
-                <a href="#"><span class="material-icons text-warning">person_add_disabled</span></a>
+                <a href="{{route('uotfollowup', $item->id)}}"><span class="material-icons text-warning">person_add_disabled</span></a>
                 <a href="{{route('viewdetail', $item->id)}}"><span class="material-icons text-primary">remove_red_eye</span></a>
                 <a href="{{route('students.edit', $item->id)}}"><span class="material-icons text-primary">create</span></a>
                 <a href="{{route('deletestudent', $item->id)}}"><span class="material-icons text-danger" onclick="return confirm('Are you sure to delete?')">delete</span></a>
@@ -143,7 +143,7 @@
             <td>{{ $item->lastname }}</td>
             <td>{{ $item->class }}</td>
             <td>
-              <a href="#"><span class="material-icons">person_remove</span></a>
+              <a href="{{route('backtofollowup', $item->id)}}"><span class="material-icons">person_remove</span></a>
             </td>
           </tr>
         </tbody>

@@ -42,3 +42,5 @@ Route::post('/addcomment/{id}', 'CommentController@addComment')->name('addcommen
 Route::get('/editcomment/{id}', 'CommentController@editComment')->name('editcomment');
 Route::get('/deletecomment/{id}', 'CommentController@deleteComment')->name('deletecomment');
 Route::patch('/updatecomment/{id}', 'CommentController@updateComment')->name('updatecomment');
+Route::get('/uotfollowup/{id}', 'StudentController@uotFollowup')->name('uotfollowup');
+Route::get('/backtofollowup/{id}', 'StudentController@backToFollowup')->name('backtofollowup'); 
