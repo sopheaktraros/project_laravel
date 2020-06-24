@@ -103,16 +103,15 @@
         @if ($item->activeFollowup == 0)
         <tbody>
           <tr>
-            <td data-toggle="modal" data-target="#my"><img src="{{asset('image/'.$item->picture)}}" width="80" height="100" class="mx-auto d-block img-thumbnail"/></td>
-            <td data-toggle="modal" data-target="#my">{{ $item->firstname }}</td>
-            <td data-toggle="modal" data-target="#my">{{ $item->lastname }}</td>
-            <td data-toggle="modal" data-target="#my">{{ $item->class }}</td>
+            <td><img src="{{asset('image/'.$item->picture)}}" width="80" height="100" class="mx-auto d-block img-thumbnail"/></td>
+            <td>{{ $item->firstname }}</td>
+            <td>{{ $item->lastname }}</td>
+            <td>{{ $item->class }}</td>
             <td>
                 <a href="#"><span class="material-icons text-warning">person_add_disabled</span></a>
-                  <!-- Button edit student -->
+                <a href="{{route('viewdetail', $item->id)}}"><span class="material-icons text-primary">remove_red_eye</span></a>
                 <a href="{{route('students.edit', $item->id)}}"><span class="material-icons text-primary">create</span></a>
                 <a href="{{route('deletestudent', $item->id)}}"><span class="material-icons text-danger" onclick="return confirm('Are you sure to delete?')">delete</span></a>
-                
             </td>
           </tr>
         </tbody>
@@ -120,27 +119,6 @@
         @endforeach
       </table>
     </div>
-
-    <!-- view detail -->
-  <div class="modal" id="my">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
-        
-      </div>
-    </div>
-  </div>
-   <!-- end view detail -->
 
     {{-- student out follow up --}}
     <div id="menu1" class="container tab-pane fade"><br>

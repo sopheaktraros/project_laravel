@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use App\User;
+use App\Commnet;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -118,5 +119,11 @@ class StudentController extends Controller
         $student_delete = Student::find($id);
         $student_delete->delete();
         return redirect('/home');
+    }
+
+    public function viewDetail($id){
+        $student = Student::find($id);
+        $comments = $student->comments;
+        return view('/detail', compact('student', 'comments'));
     }
 }

@@ -37,3 +37,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('students', 'StudentController');
 Route::get('/deletestudent/{id}', 'StudentController@deleteStudent')->name('deletestudent');
+Route::get('/viewdetail/{id}', 'StudentController@viewDetail')->name('viewdetail');
+Route::post('/addcomment/{id}', 'CommentController@addComment')->name('addcomment');
+Route::get('/editcomment/{id}', 'CommentController@editComment')->name('editcomment');
+Route::get('/deletecomment/{id}', 'CommentController@deleteComment')->name('deletecomment');
+Route::patch('/updatecomment/{id}', 'CommentController@updateComment')->name('updatecomment');

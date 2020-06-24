@@ -6,9 +6,9 @@
       <div class="col-3"></div>
       <div class="col-6">
         <div class="card">
-          <div class="text-center">
-            <img src="{{asset('image/'.$student->picture)}}" width="150" height="150" class="mx-auto d-block img-thumbnail rounded-circle mt-2"/></td>
-            <h3>{{$student->firstname}} {{$student->lastname}}  ({{$student->class}})</h3>
+          <div class="card-header text-center">
+            <img src="{{asset('image/'.$student->picture)}}" width="100" height="100" class="mx-auto d-block img-thumbnail mt-1" style="border-radius: 50px;"/></td>
+            <h4>{{$student->firstname}} {{$student->lastname}}  ({{$student->class}})</h4>
           </div>
           <div class="card-body">
               <form action="{{route('students.update', $student->id)}}" method="POST" enctype="multipart/form-data">
@@ -47,7 +47,7 @@
               </div>
           
               <div class="form-group">    
-                <input id="avatar" type="file" class="form-control" name="avatar" value="{{$student->picture}}">
+                <input id="avatar" type="file" class="form-control" name="avatar" autocomplete="picture">
             </div>
           
               <div class="form-group">
