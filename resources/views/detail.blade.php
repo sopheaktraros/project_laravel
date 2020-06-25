@@ -19,7 +19,7 @@
             <form action="{{route('addcomment', $student->id)}}" method="post">
               @csrf
                 <div class="form-group">
-                    <textarea name="comment" cols="153" rows="4" placeholder="Write a comment here ....." required></textarea>
+                    <textarea name="comment" cols="150" rows="4" placeholder="Write a comment here ....." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Add Commnet</button>
             </form>

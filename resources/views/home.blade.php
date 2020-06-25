@@ -21,8 +21,12 @@
     <div id="home" class="container tab-pane active"><br>
 
       {{-- add student --}}
+      @if ($login == 1)
         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Student</a>
-
+      @else
+          <p></p>
+      @endif
+      
       <!-- The Modal -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -108,10 +112,15 @@
             <td>{{ $item->lastname }}</td>
             <td>{{ $item->class }}</td>
             <td>
+              @if ($login == 1)
                 <a href="{{route('uotfollowup', $item->id)}}"><span class="material-icons text-warning">person_add_disabled</span></a>
                 <a href="{{route('viewdetail', $item->id)}}"><span class="material-icons text-primary">remove_red_eye</span></a>
                 <a href="{{route('students.edit', $item->id)}}"><span class="material-icons text-primary">create</span></a>
                 <a href="{{route('deletestudent', $item->id)}}"><span class="material-icons text-danger" onclick="return confirm('Are you sure to delete?')">delete</span></a>
+              @else
+                <a href="{{route('viewdetail', $item->id)}}"><span class="material-icons text-primary">remove_red_eye</span></a>
+              @endif
+                
             </td>
           </tr>
         </tbody>
