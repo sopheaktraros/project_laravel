@@ -27,6 +27,8 @@
           <p></p>
       @endif
       
+      <p></p>
+      <input class="form-control" id="myInput" type="text" placeholder="Search..">
       <!-- The Modal -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -105,7 +107,7 @@
 
         @foreach ($students as $item)
         @if ($item->activeFollowup == 0)
-        <tbody>
+        <tbody id="myTable">
           <tr>
             <td><img src="{{asset('image/'.$item->picture)}}" width="80" height="100" class="mx-auto d-block img-thumbnail"/></td>
             <td>{{ $item->firstname }}</td>
@@ -132,6 +134,10 @@
     {{-- student out follow up --}}
     <div id="menu1" class="container tab-pane fade"><br>
 
+      <p></p>
+      <input class="form-control" id="search" type="text" placeholder="Search..">
+      <p></p>
+
       <table class="table table-bordered table-hover">
         <thead style="background-color: rgb(230, 230, 230)">
           <tr>
@@ -145,14 +151,20 @@
 
         @foreach ($students as $item)
         @if ($item->activeFollowup == 1)
-        <tbody>
+
+        <tbody id="search">
           <tr>
             <td><img src="{{asset('image/'.$item->picture)}}" width="80" height="100" class="mx-auto d-block img-thumbnail"/></td>
             <td>{{ $item->firstname }}</td>
             <td>{{ $item->lastname }}</td>
             <td>{{ $item->class }}</td>
             <td>
-              <a href="{{route('backtofollowup', $item->id)}}"><span class="material-icons">person_remove</span></a>
+              @if ($login == 1)
+                <a href="{{route('backtofollowup', $item->id)}}"><span class="material-icons">person_remove</span></a>
+              @else
+                <a href="{{route('viewdetail', $item->id)}}"><span class="material-icons text-primary">remove_red_eye</span></a>
+              @endif
+              
             </td>
           </tr>
         </tbody>
@@ -163,26 +175,25 @@
     </div>
 
   </div>
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
+    $(document).ready(function(){
+      $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#search tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
 </div>
 @endsection
-
-
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}} 
